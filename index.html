@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NeurixLang Compiler (0.7)</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    body {
+      max-width: 900px;
+      margin: auto;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h1, h2, h3, h4 {
+      color: #333;
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    code {
+      background: #eee;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    blockquote {
+      border-left: 4px solid #ccc;
+      padding-left: 10px;
+      color: #555;
+      margin-left: 0;
+    }
+    ul, ol {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="content"></div>
+
+  <script>
+    const mdText = `
+# NeurixLang Compiler (0.7)
+
+#### Runs anywhere, scales everywhere - with control when you need it, and simplicity when you want it.<br>
+### It's **NeurixLang**
+
+## About NeurixLang
+**NeurixLang** is general purpose, hybrid-level, multi-paradigm programming language especially made
+for cross-platform programs to run from microcontrollers to servers.
+- **General-purpose**: Can be used for any domain (System software, embedded systems, applications, scientific code)<br><br>
+- **Hybrid-level**: Behaves like a **High level language** when using Application wrapper or OS wrapper, but
+                    also behaves like a **System/middle-level language** when using System wrapper.<br><br>
+- **Multi-paradigm**: Supports **procedural programming, object-oriented programming**, and  **low-level system         programming.** <br><br>
+- **Cross-platform**: Runs on a **custom virtual machine (NeurixLang VM)**, making it portable from tiny microcontroller 
+                    (Arduino Nano) to large systems (Linux x64, servers,etc.).<br><br>
+
+NeurixLang is designed to run on a wide variety of systems. It offers a simple syntax, efficient bytecode generation, speed, and a broad set of features. It can be used for programming microcontrollers, building mobile/desktop/web applications, creating servers, or even developing operating systems.
+
+## About NeurixLang Compiler
+**NeurixLang Compiler** is the official compiler for the NeurixLang programming language - a general-purpose, hybrid-level, multi-paradigm language designed to run efficiently on everything from microcontrollers to large-scale servers.
+Unlike traditional compilers, the NeurixLang Compiler is built with:
+
+- **Portability in mind**: It generates bytecode for the NeurixLang Virtual Machine (NVM), allowing the same code to run on embedded devices, operating systems, and application environments without modification.
+
+- **Hybrid nature**: Developers can write low-level,system-oriented code with manual memory control when needed, or high-level, application-style code with simplicity and abstraction when preferred.
+
+- **Modular wrapper system**: Code can seamlessly interact with environment through three layers:
+    - **System Wrapper**: This wrapper provides direct access to hardware and low-level system resource, enabling NeurixLang code to interact with microcountrollers, embedded devices, and servers without requiring an operating system.It exposes features like **memory control, GPIO pins, serial communication, and hardware-level networking**, giving developers fine-grained control when **performance or hardware access is critical**.<br><br>
+    - **OS Wrapper**: This wrapper connects NeurixLang Virtual Machine to underlying operating system, providing a standardized interface for **threads, processes, files, sockects, and system timers**. It allows code to run on OS-based environments (Linux, Windows, Andriod,etc.) without worrying about platform-specific differences.<br><br>
+    - **Application Wrapper**: This wrapper offers high-level utilities and libraries for developers building software in web, mobile, or desktop environments. It provides features such as **UI components, logging, data structures, protocols, and application-specific tools**, making NeurixLang behave like **modern high-level language** while keepung the option to **fall back on lower-level wrappers when needed**.<br><br>
+
+This is compiler is written in java and uses an array-based symbol table for fast searching and efficient symbol management.
+
+>**Note**: NeurixLang Virtual Machine (NVM) and Standard library are yet to be released. For now, this compiler can only compile and output the bytecode and linking file. You cannot run that bytecode and include/import the Standard library.
+
+## Quick Start
+1. Download the **Neurixlang 0.7 compiler** for the architecture of your device.
+2. Unzip the file and place it where you want.
+3. Add the path of compiler folder to system environment variable's PATH (eg. C:/ . . . /NeurixLang-0.7-windows-0x64/).
+
+Your program file must be of '.nl' extension.
+To compile, open command prompt (Windows) and type:
+\`\`\`bash
+neurixlangc "<File Path>"
+\`\`\`
+Or you can also use 
+\`\`\`bash
+neurixlangc "<File Path>" "<Project Directory>"
+\`\`\`
+- Both paths should be absolute.
+- For projects with many imports or files, the second form is recommended, as it generates all bytecode ('.nb') and linking files ('.nst') into seperate folder:
+\`\`\`
+<Project Directory>/out/
+\`\`\`
+-The first form creates bytecode and linking files in same folder as the source file.
+
+This helps manage bith small and large projects.
+
+## Future Verisons
+- **NeurixLang v0.8** : Release of NeurixLang Virtual Maching (NVM) and imporvements to Compiler.
+- **NeurixLang v0.9** : Implementation of semantic analysis and standard library.
+- **NeurixLang v1.0** : **First stable, production ready NeurixLang Virtual Machine (NVM) and Compiler.**
+
+## License
+Released under the MIT License.
+
+## Syntax
+The syntax of this NeurixLang is designed to be simple, similar to python.
+Here are some examples of respective topics.
+- **For declaraing and re-assigning variables**:
+\`\`\` NeurixLang
+let x = 8
+let y = "Hello, this is NeurixLang"
+let z
+z = false
+x = 59
+\`\`\`
+- **Calling and defining methods/functions**:
+\`\`\` NeurixLang
+func main(String:x,int:y){
+    let z = x
+    return z
+}
+let out = main("hello",43)
+\`\`\`
+Functions arguments require the type first , followed by the name, separated by a colon.
+
+- **Class and objects**:
+\`\`\` NeurixLang
+class Math{
+    func add(int:x,int:y){
+        return x+y
+    }
+}
+let obj = new Math()
+let z = obj.add(1,2)
+\`\`\`
+- **While loop**:
+\`\`\` NeurixLang
+let num = 21
+let facotrial
+While (num > 0){
+    factorial = factorial * num
+    num--
+}
+\`\`\`
+- **If,else and elif blocks**:
+\`\`\` NeurixLang
+let age = 21
+let eligible = false
+if (age < 18){
+    eligible = false
+} elif (age > 60){
+    eligible = false
+} else {
+    eligible = true
+}
+\`\`\`
+- **Imports**:
+\`\`\` NeurixLang
+import "FILE"
+\`\`\`
+Here, \`FILE\` is relative path from the project directory or the parent directory of the program file, depending on the compile command used.
+
+- **Comments**:
+\`\`\` NeurixLang
+// This is comment and will be ignored by compiler
+\`\`\`
+
+- **Scoping**:
+\`\`\` NeurixLang
+class Example{
+    public {
+        static{
+            let x
+        }
+        let z
+    }
+    private{
+        let y
+    }
+}
+\`\`\`
+- The \`static\` block is independent of the scope it is in.
+- \`public\`and \`private\` scopes cannot be combined.
+- If no scope is specified, the default is \`protected\`.
+
+Protected elements are accessible only within the same file. Access also depends on whether an object of that class exists (if the member is not static).
+
+>**Note**: Other OOP (Object Oriented Programming) features like inheritance,constructor,etc. will be integrated in NeurixLang Compiler v0.8
+
+## Contributing
+We welcome contributions!
+
+- Report issues or suggest features.
+- Open pull requests to improve the compiler or docs.
+
+## Final Words
+NeurixLang is still young (v0.7), but it's vision is bold:
+- A language that runs **anywhere**
+- Scales **everywhere**
+- Give you **control when you need it, and simplicity when you want it**.
+
+Thank you for being part of this journey.
+`;
+
+    document.getElementById("content").innerHTML = marked.parse(mdText);
+  </script>
+</body>
+</html>

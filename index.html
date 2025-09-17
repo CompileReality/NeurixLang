@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>NeurixLang Compiler (0.7)</title>
   <style>
     body {
@@ -44,7 +45,7 @@
       border-radius: 6px;
       padding: 12px;
       font-family: monospace;
-      font-size: 20px;
+      font-size: 14px;
       overflow-x: auto;
       margin: 1em 0;
       white-space: pre;
@@ -55,7 +56,7 @@
       padding: 2px 5px;
       border-radius: 4px;
       font-family: monospace;
-      font-size: 20px;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -104,21 +105,19 @@ for cross-platform programs to run from microcontrollers to servers.</p>
 
 <h2>Quick Start</h2>
 <ol>
-  <li>Download the <strong>NeurixLang 0.7 compiler</strong> for the architecture of your device.</li>
+  <li>Download the <a href="https://github.com/CompileReality/NeurixLang/releases/tag/v0.7"><strong>NeurixLang 0.7 compiler</strong></a> for the architecture of your device.</li>
   <li>Unzip the file and place it where you want.</li>
   <li>Add the path of compiler folder to system environment variable's PATH (eg. C:/ . . . /NeurixLang-0.7-windows-0x64/).</li>
 </ol>
 
 <p>Your program file must be of '.nl' extension. To compile, open command prompt (Windows) and type:</p>
 
-<div class="code-block">bash
-neurixlangc "&lt;File Path&gt;"
+<div class="code-block">neurixlangc "&lt;File Path&gt;"
 </div>
 
 <p>Or you can also use:</p>
 
-<div class="code-block">bash
-neurixlangc "&lt;File Path&gt;" "&lt;Project Directory&gt;"
+<div class="code-block">neurixlangc "&lt;File Path&gt;" "&lt;Project Directory&gt;"
 </div>
 
 <ul>
@@ -145,8 +144,7 @@ neurixlangc "&lt;File Path&gt;" "&lt;Project Directory&gt;"
 <p>The syntax of NeurixLang is designed to be simple, similar to Python. Here are some examples of respective topics.</p>
 
 <p><strong>For declaring and re-assigning variables</strong>:</p>
-<div class="code-block">NeurixLang
-let x = 8
+<div class="code-block">let x = 8
 let y = "Hello, this is NeurixLang"
 let z
 z = false
@@ -154,8 +152,7 @@ x = 59
 </div>
 
 <p><strong>Calling and defining methods/functions</strong>:</p>
-<div class="code-block">NeurixLang
-func main(String:x,int:y){
+<div class="code-block">func main(String:x,int:y){
     let z = x
     return z
 }
@@ -163,8 +160,7 @@ let out = main("hello",43)
 </div>
 
 <p><strong>Class and objects</strong>:</p>
-<div class="code-block">NeurixLang
-class Math{
+<div class="code-block">class Math{
     func add(int:x,int:y){
         return x+y
     }
@@ -174,8 +170,7 @@ let z = obj.add(1,2)
 </div>
 
 <p><strong>While loop</strong>:</p>
-<div class="code-block">NeurixLang
-let num = 21
+<div class="code-block">let num = 21
 let facotrial
 While (num &gt; 0){
     factorial = factorial * num
@@ -184,8 +179,7 @@ While (num &gt; 0){
 </div>
 
 <p><strong>If, else and elif blocks</strong>:</p>
-<div class="code-block">NeurixLang
-let age = 21
+<div class="code-block">let age = 21
 let eligible = false
 if (age &lt; 18){
     eligible = false
@@ -197,20 +191,17 @@ if (age &lt; 18){
 </div>
 
 <p><strong>Imports</strong>:</p>
-<div class="code-block">NeurixLang
-import "FILE"
+<div class="code-block">import "FILE"
 </div>
 
 <p>Here, <code>FILE</code> is relative path from the project directory or the parent directory of the program file, depending on the compile command used.</p>
 
 <p><strong>Comments</strong>:</p>
-<div class="code-block">NeurixLang
-// This is comment and will be ignored by compiler
+<div class="code-block">// This is comment and will be ignored by compiler
 </div>
 
 <p><strong>Scoping</strong>:</p>
-<div class="code-block">NeurixLang
-class Example{
+<div class="code-block">class Example{
     public {
         static{
             let x
